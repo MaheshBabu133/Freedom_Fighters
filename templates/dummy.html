@@ -1,0 +1,75 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Document</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <style>
+        nav
+        {
+            background: linear-gradient(to right,red,black);
+            height: 55px;
+            padding: 2px;
+        }
+        a
+        {
+            color: whitesmoke;
+            font-size: 30px!important;
+            font-family: 'Times New Roman', Times, serif;
+            
+        
+        }
+
+
+        
+   
+#display
+{
+background:linear-gradient(30deg,rgb(0, 0, 0),red)!important;
+color:aliceblue!important;
+font-size: 20px!important;
+padding:3px!important;
+border: 2px solid white!important;
+border-radius: 0px 20px 0px 20px!important;
+width: 200px!important;
+box-shadow: 0px 0px 20px whitesmoke!important;
+margin-bottom: 30px!important;
+margin-left: 50px!important;
+}
+
+
+    </style>
+</head>
+<body>
+    <center>
+        <nav class="nav">
+            <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+            <a href="{% url 'Register' %}" class="nav-link">Register</a>
+            <a href="{% url 'FreedomFightersData-list' %}" class="nav-link">FreedomFighters-List</a>
+ 
+
+
+            
+    {% if user.is_authenticated %}
+
+        <a href="{% url 'insert_data' %}" class="nav-link">Creat-Object</a>
+        <a href="{% url 'user_logout' %}" class="nav-link">logout</a>
+    {% else %}
+        <a href="{% url 'user_login' %}" class="nav-link">Login</a>
+    {% endif %}
+        
+        </nav>
+    </center>
+
+    {% block body_block %}
+    {% endblock %}
+</body>
+</html>
